@@ -1,0 +1,10 @@
+  if (nrow(df2) == 0) {
+    yearmeans <- df %>% group_by(year) %>% summarise(xvar = NA)
+    res <- list(periodmean=NA,yearmeans=yearmeans,error_code=-91)
+    return(res)
+  }
+
+
+  if (nrow(df2) == 0) {
+    return(list(error_code=-91))
+  }
