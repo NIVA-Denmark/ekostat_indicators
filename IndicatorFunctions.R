@@ -30,6 +30,14 @@ Min_year <- function(df) {
   res <- list(periodmean=periodmean,yearmeans=yearmeans,error_code=0)
   return(res)
 }
+Max_year <- function(df) {
+  yearmeans <- df %>% group_by(year) %>%
+    summarise(xvar = max(xvar,na.rm = TRUE))
+  
+  periodmean <- mean(yearmeans$xvar)
+  res <- list(periodmean=periodmean,yearmeans=yearmeans,error_code=0)
+  return(res)
+}
 
 
 # Aggregation principle used for e.g. Secchi depth
@@ -157,7 +165,17 @@ AggregateEQR_year <- function(df) {
   res <- list(periodmean=periodmean,yearmeans=yearmeans,error_code=0)
   return(res)  
 }
-
+MaxEQR_year <- function(df) {
+  
+  df <- mutate(df,xvarEQR = RefCond/xvar)
+  
+  yearmeans <- df %>% group_by(year) %>%
+    summarise(xvar = max(xvarEQR,na.rm = TRUE))   # should be returned in xvar
+  
+  periodmean <- mean(yearmeans$xvar)
+  res <- list(periodmean=periodmean,yearmeans=yearmeans,error_code=0)
+  return(res)  
+}
 
 # Aggregate over entire period
 # Indicator response positive to degradation, i.e. chlorophyll

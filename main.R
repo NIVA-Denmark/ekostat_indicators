@@ -31,7 +31,7 @@ MonthInclude <- c(1,2,3,4,5,6,7,8,9,10,11,12)
 ParameterVector <- c(0)
 MinObsList <- list(MinYear=3,MinObsPerYear=1)
 df <- ReadMonitoringDataSMHI("data/Coast_bqi.sas7bdat") %>% filter(EU_CD=="SE580325-113500")
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_bqi.sas7bdat") %>% filter(EU_CD=="SE652920-222650")
+df <- ReadMonitoringDataSMHI("data/Coast_bqi.sas7bdat") %>% filter(EU_CD=="SE652920-222650")
 CalculateIndicator("CoastBQI",df,ParameterVector,MinObsList,variance_list,MonthInclude,2013,2018)
 
 # MSMDI indicator
@@ -43,7 +43,7 @@ variance_list <- list(V_station=0.5211,V_obspoint=0,
 MonthInclude <- c(1,2,3,4,5,6,7,8,9,10,11,12)
 ParameterVector <- c(0)
 MinObsList <- list(MinYear=3,MinObsPerYear=1)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_msmdi.sas7bdat") %>% filter(EU_CD=="SE622011-146303")
+df <- ReadMonitoringDataSMHI("data/Coast_msmdi.sas7bdat") %>% filter(EU_CD=="SE622011-146303")
 CalculateIndicator("CoastMSMDI",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
 
 # Testing the biovolume indicator
@@ -51,7 +51,7 @@ variance_list <- list(V_station=0.23,V_obspoint=0,
                       V_year=0.10,V_yearmonth=0.05,
                       V_stationyear=0.05,V_stationmonth=0.08,V_stationdate=0.05,
                       V_institution=0.05,V_replication=0)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_biovol.sas7bdat") %>% filter(EU_CD=="SE552170-130626")
+df <- ReadMonitoringDataSMHI("data/Coast_biovol.sas7bdat") %>% filter(EU_CD=="SE552170-130626")
 MonthInclude <- c(6,7,8)
 MinObsList <- list(MinYear=3,MinObsPerYear=1)
 CalculateIndicator("CoastBiovol",df,ParameterVector,MinObsList,variance_list,MonthInclude,2013,2018)
@@ -60,7 +60,7 @@ MinObsList <- list(MinYear=3,MinObsPerYear=1)
 CalculateIndicator("CoastBiovolEQR",df,ParameterVector,MinObsList,variance_list,MonthInclude,2013,2018)
 
 # Testing the Chlorophyll a indicator
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE552170-130626")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE552170-130626")
 MonthInclude <- c(6,7,8)
 MinObsList <- list(MinYear=3,MinObsPerYear=1)
 CalculateIndicator("CoastChla",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
@@ -70,11 +70,11 @@ ParameterVector <- c(17.0,-0.250,7,0.94,0,1)
 MinObsList <- list(MinYear=3,MinObsPerYear=1)
 CalculateIndicator("CoastChlaEQR",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
 # type with salinity correction, e.g. type=8
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE560900-145280")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE560900-145280")
 ParameterVector <- c(33.8,-2.679,7,0.26,0.0051,1.9974)
 CalculateIndicator("CoastChlaEQR",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
 
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE560900-145280")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE560900-145280")
 # Testing the indicator for Secchi depth
 MonthInclude <- c(6,7,8)
 CalculateIndicator("CoastSecchi",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
@@ -111,15 +111,15 @@ CalculateIndicator("CoastTPsummerEQR",df,ParameterVector,MinObsList,variance_lis
 # Testing coastal oxygen indices
 MonthInclude <- c(1,2,3,4,5,6,7,8,9,10,11,12)
 ParameterVector <- c(0)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(station=="INSTÖ RÄNNA")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(station=="INSTÖ RÄNNA")
 CalculateIndicator("CoastBottomOxygen",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(station=="U9 / LÅNGALMAFJ")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(station=="U9 / LÅNGALMAFJ")
 CalculateIndicator("CoastBottomOxygen",df,ParameterVector,MinObsList,variance_list,MonthInclude,2010,2015)
 MonthInclude <- c(6,7,8,9,10,11,12)
 CalculateIndicator("CoastHypoxicArea",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(station=="SKÄLDERVIKEN")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(station=="SKÄLDERVIKEN")
 CalculateIndicator("CoastHypoxicArea",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(station=="BYFJORDEN")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(station=="BYFJORDEN")
 CalculateIndicator("CoastHypoxicArea",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
 
 
@@ -131,15 +131,15 @@ variance_list <- list(V_station=0.0472620391974166,V_obspoint=0,
                       V_institution=0.0160297370140365,V_replication=0)
 MonthInclude <- c(11,12,1,2)
 ParameterVector <- c(0)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE560900-145280")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE560900-145280")
 un1 <-CalculateIndicator("CoastTNwinter",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE574050-114780")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE574050-114780")
 un2 <-CalculateIndicator("CoastTNwinter",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE580688-114860")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE580688-114860")
 un3 <-CalculateIndicator("CoastTNwinter",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE581740-114820")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE581740-114820")
 un4 <-CalculateIndicator("CoastTNwinter",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,2012)
-df <- ReadMonitoringDataSMHI("../Testing/SASdata/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE581853-112736")
+df <- ReadMonitoringDataSMHI("data/Coast_watersamples.sas7bdat") %>% filter(EU_CD=="SE581853-112736")
 un5 <-CalculateIndicator("CoastTNwinter",df,ParameterVector,MinObsList,variance_list,MonthInclude,2007,20128)
 un <- list(un1,un2,un3,un4,un5)
 
@@ -184,7 +184,7 @@ CalculateIndicator("LakeIPS",df,ParameterVector,MinObsList,variance_list,MonthIn
 ParameterVector <- c(19.6,rep(0,35))
 CalculateIndicator("LakeIPSEQR",df,ParameterVector,MinObsList,variance_list,MonthInclude,2013,2018)
 ParameterVector <- c(9.6,rep(0,35))
-CalculateIndicator("LakeACIDEQR",df,ParameterVector,MinObsList,variance_list,MonthInclude,2013,2018)
+CalculateIndicator("LakeACID",df,ParameterVector,MinObsList,variance_list,MonthInclude,2013,2018)
 # Benthic invertebrates
 MonthInclude <- c(1,2,3,4,5,6,7,8,9,10,11,12)
 df <- filter(ReadMonitoringDataSMHI("data/lake_biolindex.sas7bdat"),EU_CD == 'SE638665-129243')

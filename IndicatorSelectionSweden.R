@@ -108,18 +108,18 @@ CalculateIndicator <-
                     CoastBiovolEQR    = AggregateEQRtrunc_year_station,
                     CoastSecchi       = Aggregate_period,
                     CoastSecchiEQR    = AggregateEQR_N_period,
-                    CoastDINwinter    = Aggregate_year,
-                    CoastDINwinterEQR = AggregateEQR_year,
-                    CoastDIPwinter    = Aggregate_year,
-                    CoastDIPwinterEQR = AggregateEQR_year,
-                    CoastTNsummer     = Aggregate_year,
+                    CoastDINwinter    = Aggregate_year, # Replace with Max_year?
+                    CoastDINwinterEQR = AggregateEQR_year, # Replace with MaxEQR_year?
+                    CoastDIPwinter    = Aggregate_year, # Replace with Max_year?
+                    CoastDIPwinterEQR = AggregateEQR_year, # Replace with MaxEQR_year?
+                    CoastTNsummer     = Aggregate_year, 
                     CoastTNsummerEQR  = AggregateEQR_year,
-                    CoastTNwinter     = Aggregate_year,
-                    CoastTNwinterEQR  = AggregateEQR_year,
+                    CoastTNwinter     = Aggregate_year, # Replace with Max_year?
+                    CoastTNwinterEQR  = AggregateEQR_year, # Replace with MaxEQR_year?
                     CoastTPsummer     = Aggregate_year,
                     CoastTPsummerEQR  = AggregateEQR_year,
-                    CoastTPwinter     = Aggregate_year,
-                    CoastTPwinterEQR  = AggregateEQR_year,
+                    CoastTPwinter     = Aggregate_year, # Replace with Max_year?
+                    CoastTPwinterEQR  = AggregateEQR_year, # Replace with MaxEQR_year?
                     CoastOxygen       = OxygenTest2,
                     CoastBottomOxygen = OxygenLowerQuartile,
                     CoastHypoxicArea  = Aggregate_year,
@@ -308,7 +308,7 @@ CalculateIndicator <-
       df <- mutate(df,RefCond = RefCond)
     }
     # setting RefCond and MaxCond depending for lake and river indicators, i.e. RefCond in ParameterVector[1] and MaxCond in ParameterVector[2]
-    if (Indicator %in% c("LakeBiovolEQR","LakeChlaEQR","LakePTIEQR","LakeNphytspecEQR","LakeTMIEQR","LakeTMIEQR","LakeASPTEQR","LakeBQIEQR","LakeMILAEQR","LakeEQR8","LakeAindexW5","LakeEindexW3","LakeTPEQR","LakeSecchiDepthEQR",
+    if (Indicator %in% c("LakeBiovolEQR","LakeChlaEQR","LakePTIEQR","LakeNphytspecEQR","LakeTMIEQR","LakeIPSEQR","LakeASPTEQR","LakeBQIEQR","LakeMILAEQR","LakeEQR8","LakeAindexW5","LakeEindexW3","LakeTPEQR","LakeSecchiDepthEQR",
                          "RiverIPSEQR","RiverASPTEQR","RiverDJEQR","RiverMISAEQR","RiverTPEQR")) {
       RefCond <- mat.or.vec(nrow(df), 1)
       MaxCond <- mat.or.vec(nrow(df), 1)
