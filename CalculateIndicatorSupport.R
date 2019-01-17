@@ -123,9 +123,6 @@ SetVector_IndicatorSimO2 <-
 #'
 Filter_df <-
   function(df,MonthInclude,startyear,endyear) {
-    # Add month and year to df
-    df <- mutate(df,month=month(date))
-    df <- mutate(df,year=year(date))
     # Use only data within assessment period
     df <- filter(df,year>=startyear)
     df <- filter(df,year<=endyear)
@@ -221,11 +218,15 @@ stderr_aggr <-
     sqrt(sum(x^2))/length(x)
   }
 
-#' Function RefCond_LakeTPsummer calculates the reference condition for TP in µg/l as function of absorbance, altitude and lake depth
-RefCond_LakeTPsummer <-
-  function(AbsF,Altitude,LakeDepth=0) {
-    if (LakeDepth == 0) logP=1.561+0.295*log10(AbsF)-0.146*log10(Altitude)
-    else logP=1.627+0.246*log10(AbsF)-0.139*log10(Altitude)-0.197*log10(LakeDepth)
+#' Function RefCond_LakeTP calculates the reference condition for TP in µg/l as function of absorbance, turbidity, and altitude
+RefCond_LakeTP <-
+  function(AbsF,Altitude,Turbidity=0,AugustOnly = FALSE) {
+    if (Turbidity == 0) logP=1.76+0.338*log10(AbsF)-0.213*log10(Altitude)
+    else logP=1.425+0.162*log10(AbsF)-0.128*log10(Altitude)+0.482*log10(Turbidity)
+    if (AugustOnly) {
+      if (Turbidity == 0) logP=2.247+0.530*log10(AbsF)-0.339*log10(Altitude)
+      else logP=1.437+0.250*log10(AbsF)-0.120*log10(Altitude)+0.536*log10(Turbidity)
+    }
     return(10**logP)
   }
 
